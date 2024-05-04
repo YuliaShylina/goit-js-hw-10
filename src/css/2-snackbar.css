@@ -5,7 +5,7 @@ form {
   max-width: 360px;
 }
 
-.form > label {
+form > label {
   display: flex;
   flex-direction: column;
   gap: 8px;
