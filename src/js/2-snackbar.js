@@ -16,40 +16,38 @@ const promiseDelay = (delay, promiseFunc) => {
 
 const processPromise = (delay, promiseFunc) => {
   promiseDelay(delay, promiseFunc)
-    .then(delay => {
+    .then(delayValue => {
       iziToast.show({
         message: `✅ OK Fulfilled promise in ${delay}ms`,
         backgroundColor: '#59A10D',
         position: 'topRight',
         messageColor: '#ffffff',
-        close: false,
+        iconColor: '#ffffff',
       });
     })
-    .catch(delay => {
+    .catch(delayValue => {
       iziToast.show({
         message: `❌ Rejected promise in ${delay}ms`,
         backgroundColor: '#FF2E2E',
         position: 'topRight',
         messageColor: '#ffffff',
-        close: false,
       });
     });
 };
 
-const handleSubmit = event => {
+const submitPromise = event => {
   event.preventDefault();
 
   const delayValue = Number(delayInput.value);
 
-  if (delayValue < 0) {
+  if (delayValue <= 0) {
     iziToast.error({
       message: 'Error: Illegal operation',
       position: 'topRight',
       messageColor: '#ffffff',
       backgroundColor: '#EF4040',
-      close: false,
     });
-    delayInput.value = '';
+    event.target.reset();
     return;
   }
 
@@ -57,4 +55,4 @@ const handleSubmit = event => {
   event.target.reset();
 };
 
-promiseForm.addEventListener('submit', handleSubmit);
+promiseForm.addEventListener('submit', submitPromise);

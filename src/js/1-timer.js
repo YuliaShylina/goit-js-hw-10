@@ -12,13 +12,6 @@ const dataSeconds = document.querySelector('[data-seconds]');
 
 let selectedDate = 0;
 
-const updateTimer = ({ days, hours, minutes, seconds }) => {
-  dataDays.textContent = String(days).padStart(2, '0');
-  dataHours.textContent = String(hours).padStart(2, '0');
-  dataMinutes.textContent = String(minutes).padStart(2, '0');
-  dataSeconds.textContent = String(seconds).padStart(2, '0');
-};
-
 function convertMs(ms) {
   const second = 1000;
   const minute = second * 60;
@@ -81,3 +74,10 @@ startButton.addEventListener('click', () => {
   startButton.disabled = true;
   dateTimePicker.disabled = true;
 });
+
+const updateTimer = ({ days, hours, minutes, seconds }) => {
+  dataDays.textContent = String(days).padStart(2, '0');
+  dataHours.textContent = String(hours).padStart(2, '0');
+  dataMinutes.textContent = String(minutes).padStart(2, '0');
+  dataSeconds.textContent = String(seconds).padStart(2, '0');
+};
